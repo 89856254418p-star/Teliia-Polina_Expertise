@@ -19,7 +19,12 @@
             --text-light: #718096;
             --white: #ffffff;
         }
-        
+       .hero-image img {
+    width: 100%;
+    height: 400px; /* Фиксированная высота */
+    object-fit: cover; /* Чтобы фото правильно обрезалось */
+    object-position: center; /* Фокусировка на центре фото */
+} 
         * {
             margin: 0;
             padding: 0;
@@ -547,11 +552,8 @@
                 <a href="#contact" class="btn">Обсудить проект</a>
             </div>
             <div class="hero-image">
-                <!-- Замените на реальное фото -->
-                <div style="width: 100%; height: 400px; background-color: #e2e8f0; display: flex; align-items: center; justify-content: center; color: #718096;">
-                    Фото Полины
-                </div>
-            </div>
+    <img src="images/Polina1.jpg" alt="Полина Телия - Шеф-редактор и AI-тренер">
+</div>
         </div>
     </section>
 
