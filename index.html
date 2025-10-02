@@ -768,21 +768,21 @@
         <p>Помогу внедрить лучшие практики, обучить сотрудников и оптимизировать процессы. Давайте обсудим вашу задачу.</p>
         
         <!-- ОБНОВЛЕННАЯ ФОРМА С FORMSPREE -->
-        <form class="contact-form" action="https://formspree.io/f/xnngvgoj" method="POST">
-            <div class="form-group">
-                <label for="name">Имя, компания</label>
-                <input type="text" id="name" name="name" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="email">E-mail</label>
-                <input type="email" id="email" name="email" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="message">Ваше сообщение (необязательное)</label>
-                <textarea id="message" name="message" class="form-control" rows="4"></textarea>
-            </div>
-            <button type="submit" class="btn">Отправить</button>
-        </form>
+        <form class="contact-form" id="contact-form">
+    <div class="form-group">
+        <label for="name">Имя, компания</label>
+        <input type="text" id="name" name="name" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="message">Ваше сообщение (необязательно)</label>
+        <textarea id="message" name="message" class="form-control" rows="4"></textarea>
+    </div>
+    <button type="submit" class="btn">Отправить</button>
+</form>
         
         <a href="mailto:polo4ka@yandex.ru" class="email-link">Или напишите в телеграм: @Polina_Teli</a>
     </div>
@@ -802,19 +802,35 @@
     </footer>
 
     <script>
-       // Form submission
+     // Form submission
 document.getElementById('contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
     
+    // Показываем ваше сообщение
     alert('Спасибо за ваше сообщение! Я свяжусь с вами в ближайшее время.');
     
-    // Очищаем форму через небольшую задержку
-    setTimeout(() => {
-        this.reset();
-    }, 100);
+    // Отправляем данные на Formspree через fetch
+    const formData = new FormData(this);
     
-    // Отправляем форму
-    this.submit();
+    fetch('https://formspree.io/f/ваш-formspree-id', {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            // Успешно отправлено
+            this.reset();
+        } else {
+            // Ошибка
+            console.error('Ошибка отправки формы');
+        }
+    })
+    .catch(error => {
+        console.error('Ошибка:', error);
+    });
 });
         // Scroll animations
         const fadeElements = document.querySelectorAll('.fade-in');
