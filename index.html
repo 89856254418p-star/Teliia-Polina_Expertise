@@ -819,16 +819,6 @@
             observer.observe(element);
         });
         
-        // Form submission
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Здесь должна быть логика отправки формы
-            // Например, через EmailJS, Formspree или Telegram бота
-            
-            alert('Спасибо за ваше сообщение! Я свяжусь с вами в ближайшее время.');
-            this.reset();
-        });
         
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
