@@ -802,6 +802,20 @@
     </footer>
 
     <script>
+       // Form submission
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    alert('Спасибо за ваше сообщение! Я свяжусь с вами в ближайшее время.');
+    
+    // Очищаем форму через небольшую задержку
+    setTimeout(() => {
+        this.reset();
+    }, 100);
+    
+    // Отправляем форму
+    this.submit();
+});
         // Scroll animations
         const fadeElements = document.querySelectorAll('.fade-in');
         
